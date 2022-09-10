@@ -1,14 +1,13 @@
 #include <stdio.h>
-#include "sys.h"
 #include "lcd.h"
-#include "calc.h"
+
+unsigned int count = 5;
+char txt[5];
 
 int main(void)
 {
-    Soma();
     lcd_init();         
     lcd_write(45);
-    printf("Count = %d", lcd_read_count());
-    
+    printf("\n\n");
     return 0;
 }
