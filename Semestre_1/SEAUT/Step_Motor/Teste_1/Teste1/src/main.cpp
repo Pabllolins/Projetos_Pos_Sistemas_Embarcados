@@ -16,6 +16,7 @@ digitalWrite(IN1, LOW);//Bobinas desligadas
 digitalWrite(IN2, LOW);
 digitalWrite(IN3, LOW);
 digitalWrite(IN4, LOW);
+Serial.begin(115200);
 }
 
 void loop() {
@@ -42,7 +43,9 @@ void loop() {
     digitalWrite(IN4, HIGH);
     digitalWrite(IN1, HIGH);
     delay(step);
-  }
 
+    //delay(1000);
+    //Serial.println(i);
+  }
 
 }
