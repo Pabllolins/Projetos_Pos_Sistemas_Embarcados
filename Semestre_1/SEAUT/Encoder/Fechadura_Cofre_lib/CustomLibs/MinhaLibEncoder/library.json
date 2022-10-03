@@ -1,0 +1,12 @@
+{
+  "name": "MinhaLibEncoder",
+  "keywords": "MinhaLibEncoder",
+  "description": "Biblioteca para utilização do encoder KY-040",
+  "authors":{
+        "name": "Pabllo Lins",
+        "email": "pablloricardolins@gmail.com"
+   },
+  "version": "1.0.0",
+  "frameworks": "Arduino Uno",
+  "platforms": "Arduino Uno, ESP32"
+}
