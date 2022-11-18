@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/SOTR/helloWorld/build/CMakeFiles/bootloader
+/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/SOTR/helloWorld/build/CMakeFiles/bootloader.rule
+/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/SOTR/helloWorld/build/CMakeFiles/bootloader-complete.rule
+/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/SOTR/helloWorld/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/SOTR/helloWorld/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/SOTR/helloWorld/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/SOTR/helloWorld/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/SOTR/helloWorld/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/SOTR/helloWorld/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/SOTR/helloWorld/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

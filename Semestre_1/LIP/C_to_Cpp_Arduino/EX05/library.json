@@ -1,0 +1,12 @@
+{
+  "name": "uart_cpp",
+  "keywords": "uart_cpp",
+  "description": "Biblioteca da disciplina Programacao de Computadores",
+  "authors":{
+        "name": "Pabllo Lins",
+        "email": "pablloricardolins@gmail.com"
+   },
+  "version": "1.0.0",
+  "frameworks": "Arduino Uno",
+  "platforms": "Arduino Uno"
+}

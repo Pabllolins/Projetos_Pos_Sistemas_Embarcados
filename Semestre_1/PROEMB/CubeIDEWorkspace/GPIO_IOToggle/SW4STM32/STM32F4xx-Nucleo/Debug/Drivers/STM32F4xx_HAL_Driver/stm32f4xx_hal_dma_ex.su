@@ -1,0 +1,3 @@
+/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/PROEMB/CubeIDEWorkspace/GPIO_IOToggle/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c:100:19:HAL_DMAEx_MultiBufferStart	12	static
+/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/PROEMB/CubeIDEWorkspace/GPIO_IOToggle/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c:154:19:HAL_DMAEx_MultiBufferStart_IT	16	static
+/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/PROEMB/CubeIDEWorkspace/GPIO_IOToggle/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c:239:19:HAL_DMAEx_ChangeMemory	0	static
