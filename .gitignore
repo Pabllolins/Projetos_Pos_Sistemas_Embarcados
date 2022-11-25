@@ -1,0 +1,121 @@
+
+
+#________________________________ GENERAL FILES _______________________________
+#TESTE
+.settings/
+
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+#other files
+*.exe
+*.bin
+*.mp4
+*.srt
+*.mp3
+*.jpg
+*.log
+*.txt
+*.str
+*.lnk
+*.zip
+*.pptx
+*.elf
+*.mk
+*.xml
+*fzz
+*.mp4
+*.mpg4
+
+#____________________________ GENERAL FILES FIM _______________________________
+
+
+
+#______________________________ STM32 CUBE IDE ________________________________
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+/.metadata/
+
+# STM32 CubeIDE
+/Debug/
+/Release/
+#______________________________ STM32 CUBE IDE FIM ____________________________
+
+
+
+#__________________________________ KEIL ______________________________________
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+MDK-ARM/RepProject/Objects/
+MDK-ARM/RepProject/Listing/
+MDK-ARM/RepProject/bin/
+#MDK-ARM/Hw/
+*.bak
+*.dep
+*.axf
+*.htm
+
+*.lst
+*.crf
+MDK-ARM/RepProject/Objects/ObjectsRepLightLCD/CodinRePLightLCD.lnp
+*.lnp
+#__________________________________ KEIL FIM __________________________________
+
+

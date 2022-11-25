@@ -1,6 +1,8 @@
-../Core/Src/main.c:66:5:main	8	static
-../Core/Src/main.c:119:6:SystemClock_Config	88	static
-../Core/Src/main.c:167:13:MX_USART2_UART_Init	8	static
-../Core/Src/main.c:200:13:MX_GPIO_Init	48	static
-../Core/Src/main.c:229:6:GPIOC_13_InitButtonB1	16	static
-../Core/Src/main.c:270:6:Error_Handler	4	static,ignoring_inline_asm
+../Core/Src/main.c:88:5:main	8	static
+../Core/Src/main.c:137:6:SystemClock_Config	88	static
+../Core/Src/main.c:185:13:MX_USART2_UART_Init	8	static
+../Core/Src/main.c:218:13:MX_GPIO_Init	48	static
+../Core/Src/main.c:247:6:vGPIOC_13_InitButtonB1	16	static
+../Core/Src/main.c:296:6:vPiscaPiscaLED2	8	static
+../Core/Src/main.c:304:6:vGPIOA_5_InitLED2	16	static
+../Core/Src/main.c:337:6:Error_Handler	4	static,ignoring_inline_asm

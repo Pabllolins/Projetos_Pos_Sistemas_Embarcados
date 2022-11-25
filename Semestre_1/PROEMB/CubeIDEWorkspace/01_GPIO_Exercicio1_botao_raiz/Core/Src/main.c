@@ -14,7 +14,25 @@
   * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
-  */
+
+	/*
+	 * Autor: Pabllo Lins
+	 * Versão: v.1.0
+	 * Descrição: Firmware para entrega do capitulo de IOs
+	 * Licença: N/A
+	 * Data: 18/11/2022
+	*/
+
+	/*  Informações adicionais
+	* PLACA: NUCLEO-F446RE
+	* MCU: STM32F446RE
+	* IDE: STM32CubeIDE Version: 1.10.1
+	* Extension:
+	* Framework:
+	* Periferico: GPIO - PortC Pin 13 - B1 - Push Button User da placa
+	* Periferico: GPIO - PortA Pin 05 - LD2 - LED 2 verde da placa
+	*/
+
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -34,7 +52,6 @@
 #define true 1
 #define false 0
 
-#define MASCARA false
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -54,7 +71,9 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
-void GPIOC_13_InitButtonB1();
+void vGPIOC_13_InitButtonB1();
+void vPiscaPiscaLED2();
+void vGPIOA_5_InitLED2();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -92,7 +111,8 @@ int main(void)
   //MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  GPIOC_13_InitButtonB1();
+  vGPIOA_5_InitLED2();
+  vGPIOC_13_InitButtonB1();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -102,15 +122,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  GPIOA->ODR = 0xFFFF;
-	  //GPIOA->ODR |= 1<<5;
-	  //GPIOA->ODR |= LD2_Pin;
-	  //GPIOA->ODR = GPIOA->ODR | 1<<5;
-	  HAL_Delay(500);
-	  GPIOA->ODR = 0x0000;
-	  //GPIOA->ODR &= ~(1<<5);
-	  //GPIOA->ODR &= ~(LD2_Pin);
-	  HAL_Delay(500);
+	  while((GPIOC->IDR & (0x1<<13)) == 0 )
+	  {
+		  vPiscaPiscaLED2();
+	  }
   }
   /* USER CODE END 3 */
 }
@@ -229,75 +244,90 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void GPIOC_13_InitButtonB1()
+void vGPIOC_13_InitButtonB1()
 {
 	//Botão B1 = PORT C pino 13
-#if MASCARA
 	uint32_t tmpreg = 0;
-	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN; //Habilita o clock do PORTC
-	tmpreg = RCC->AHB1ENR; //Aguarda estabilizar
 
-	GPIOC->MODER = (GPIOC->MODER & ~GPIO_MODER_MODE13_Msk) | GPIO_MODER_MODE13_1;//M. saída (01)
+	/* Habilita o clock do PORTC */
+	RCC->AHB1ENR |= 0x00000004;
 
-	GPIOA->OTYPER = (GPIOA->OTYPER & ~GPIO_OTYPER_OT5_Msk); //Tipo push-pull (0)
+	 /* Aguarda estabilizar */
+	tmpreg = RCC->AHB1ENR;
 
-	GPIOA->OSPEEDR = (GPIOA->OSPEEDR & ~GPIO_OSPEEDR_OSPEED5_Msk) | GPIO_OSPEEDER_OSPEEDR5_1;//Velocidade fast (10)
-
-	GPIOA->PUPDR = (GPIOA->PUPDR & ~GPIO_PUPDR_PUPD5_Msk); //Sem resistores internos (00)
-
-	//GPIOA->ODR = (GPIOA->ODR & ~GPIO_ODR_OD5_Msk); //Estado inicial '0'
-	GPIOA->BSRR = GPIO_BSRR_BR5; //Estado inicial resetado '0’
-#else
-	uint32_t tmpreg = 0;
-	RCC->AHB1ENR |= 0x00000004; // Habilita o clock do PORTC
-
-	tmpreg = RCC->AHB1ENR; // Aguarda estabilizar
-
-	GPIOC->MODER = (GPIOC->MODER & ~(0x3<<(2*5))) | (0x0<<(2*5)); // Modo entrada (00)
-	//MODER (xx) - 0b 00000000 00000000 00000000 000000xx
-	//Modo entrada (00)
-	//Modo saida (01)
-	//Modo AF (10)
-	//Modo Analogico (11)
-	//0x0000
-
-	GPIOA->OTYPER = (GPIOA->OTYPER & ~0x1<<5); //Tipo push-pull (0)
-
-	GPIOA->OSPEEDR = (GPIOA->OSPEEDR & ~(0x3<<(2*5))) | (0x2<<(2*5)); //Velocidade fast (10)
-
-	GPIOA->PUPDR = (GPIOA->PUPDR & ~(0x3<<(2*5))); //Sem resistores internos (00)
-
-	//GPIOA->ODR = (GPIOA->ODR & ~0x1<<5); //Estado inicial '0’
-	GPIOA->BSRR = 0x1<<(5+16); //Estado inicial resetado '0’
-
-	/*
-	 * REF
-	 *
-	 *
-	 * 	uint32_t tmpreg = 0;
-	RCC->AHB1ENR |= 0x01; //Habilita o clock do PORTA
-
-	tmpreg = RCC->AHB1ENR; //Aguarda estabilizar
-
-	GPIOA->MODER = (GPIOA->MODER & ~(0x3<<(2*5))) | (0x1<<(2*5));  //Modo saída (01)
-	                               	 00000011 00000000 |   00000010 00000000
-	                               	 00000011 00000000
-	                               	 11111100 11111111
-	                               	 xxxxxxxx xxxxxxxx
-	                               	 xxxxxx00 xxxxxxxx
+	/* C13 Modo entrada (00) */
+	GPIOC->MODER = (GPIOB->MODER & ~(0x3<<((2*13)+1)));
+	//	(0x3<<((2*13)+1))	= xxxxx110000000000000000000000000
+	//	~(0x3<<((2*13)+1))	= xxxxx001111111111111111111111111
+	//	(AND)
+	//	MODER				= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	//	MODER				= xxxxx00xxxxxxxxxxxxxxxxxxxxxxxxx
 
 
-	GPIOA->OTYPER = (GPIOA->OTYPER & ~0x1<<5); //Tipo push-pull (0)
+	/* Tipo push-pull (0) */
+	GPIOC->OTYPER = (GPIOC->OTYPER & ~(0x1<<13));
 
-	GPIOA->OSPEEDR = (GPIOA->OSPEEDR & ~(0x3<<(2*5))) | (0x2<<(2*5)); //Velocidade fast (10)
+	/* Velocidade: High Speed (11) */
+	GPIOC->OSPEEDR = (GPIOC->OSPEEDR | (0x3<<((2*13)+1)));
+	//	(0x3<<((2*13)+1))	= xxxxx110000000000000000000000000
+	//	(OR)
+	//	OSPEEDR				= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	//	OSPEEDR				= xxxxx11xxxxxxxxxxxxxxxxxxxxxxxxx
 
-	GPIOA->PUPDR = (GPIOA->PUPDR & ~(0x3<<(2*5))); //Sem resistores internos (00)
 
-	//GPIOA->ODR = (GPIOA->ODR & ~0x1<<5); //Estado inicial '0’
-	GPIOA->BSRR = 0x1<<(5+16); //Estado inicial resetado '0’
-	 * */
-#endif
+	/* Pull-Up (01) */
+	GPIOC->PUPDR = (GPIOC->PUPDR & ~(0x3<<((2*13)+1))) | (0x1<<(2*13));
+	//	(0x3<<27))		= xxxxx110000000000000000000000000
+	//	~(0x3<<25))		= xxxxx001111111111111111111111111
+	//	(AND)
+	//	PUPDR			= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	//	PUPDR			= xxxxx00xxxxxxxxxxxxxxxxxxxxxxxxx
+
+	//	(0x1<<(2*13))	= xxxxx010000000000000000000000000
+	//	(OR)
+	//	PUPDR			= xxxxx00xxxxxxxxxxxxxxxxxxxxxxxxx
+	//	PUPDR			= xxxxx01xxxxxxxxxxxxxxxxxxxxxxxxx
+
+	/* Estado inicial resetado '0’ */
+	//GPIOA->ODR = (GPIOA->ODR & ~0x1<<5);
+	GPIOC->BSRR = 0x1<<(13+16);
 }
+
+void vPiscaPiscaLED2(void)
+{
+	GPIOA->ODR = 0xFFFF;
+	HAL_Delay(500);
+	GPIOA->ODR = 0x0000;
+	HAL_Delay(500);
+}
+
+void vGPIOA_5_InitLED2(void)
+{
+	uint32_t tmpreg = 0;
+
+	/* Habilita o clock do PORTA */
+	RCC->AHB1ENR |= 0x01;
+
+	/* Aguarda estabilizar */
+	tmpreg = RCC->AHB1ENR;
+
+	/* Modo saída (01) */
+	GPIOA->MODER = (GPIOA->MODER & ~(0x3<<(2*5))) | (0x1<<(2*5));
+
+	/* Tipo push-pull (0) */
+	GPIOA->OTYPER = (GPIOA->OTYPER & ~0x1<<5);
+
+	/* Velocidade fast (10) */
+	GPIOA->OSPEEDR = (GPIOA->OSPEEDR & ~(0x3<<(2*5))) | (0x2<<(2*5));
+
+	/* Sem resistores internos (00) */
+	GPIOA->PUPDR = (GPIOA->PUPDR & ~(0x3<<(2*5)));
+
+	/* Estado inicial resetado '0’*/
+	//GPIOA->ODR = (GPIOA->ODR & ~0x1<<5);
+	GPIOA->BSRR = 0x1<<(5+16);
+}
+
 /* USER CODE END 4 */
 
 /**
