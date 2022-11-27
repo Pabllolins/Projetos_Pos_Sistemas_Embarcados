@@ -50,12 +50,13 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void vEncoderLeft(void);
+void vEncoderRight(void);
+void vEncoderPosition(int position);
 /* USER CODE END 0 */
 
 /**
@@ -88,6 +89,12 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+  int encoderPostCount = 0;
+  int pinALast;
+  int aVal;
+  uint8_t bCW;
+
+  pinALast = HAL_GPIO_ReadPin(GPIOC, Encoder_CLK_Pin);
 
   /* USER CODE END 2 */
 
@@ -98,6 +105,42 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  //aVal =  digitalRead(PinClk);
+	  aVal = HAL_GPIO_ReadPin(GPIOC, Encoder_CLK_Pin);
+
+	  if(aVal != pinALast)
+	  {
+	    //if(digitalRead(PinData) != aVal)
+		if(HAL_GPIO_ReadPin(GPIOC, Encoder_DT_Pin) != aVal)
+	    {
+	      encoderPostCount++;
+	      bCW = 1;
+	    }
+	    else
+	    {
+	      encoderPostCount--;
+	      bCW = 0;
+	    }
+
+	    //Serial.print("Rotação: ");
+	    if(bCW)
+	    {
+	      //Serial.println("horária");
+	      vEncoderRight();
+	    }
+	    else
+	    {
+	      //Serial.println("anti-horária");
+	      vEncoderLeft();
+	    }
+
+//	    HAL_Delay(1000);
+//	    vEncoderPosition(encoderPostCount);
+//	    Serial.print("Posição do encoder: ");
+//	    Serial.println(encoderPostCount);
+	  }
+
+	  pinALast = aVal;
   }
   /* USER CODE END 3 */
 }
@@ -206,6 +249,18 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : Encoder_CLK_Pin Encoder_DT_Pin */
+  GPIO_InitStruct.Pin = Encoder_CLK_Pin|Encoder_DT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : Encoder_SW_Pin */
+  GPIO_InitStruct.Pin = Encoder_SW_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(Encoder_SW_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pin : LD2_Pin */
   GPIO_InitStruct.Pin = LD2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -216,6 +271,37 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void vEncoderLeft(void)
+{
+	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+	HAL_Delay(100);
+	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+	HAL_Delay(100);
+}
+
+void vEncoderRight(void)
+{
+	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+	HAL_Delay(50);
+	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+	HAL_Delay(50);
+	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+	HAL_Delay(50);
+	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+	HAL_Delay(50);
+}
+
+void vEncoderPosition(int position)
+{
+	for(int i = 0; i < position; i++)
+	{
+		HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+		HAL_Delay(200);
+		HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+		HAL_Delay(200);
+	}
+}
 
 /* USER CODE END 4 */
 

@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=linux
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:03_GPIO_HAL_Reles Debug
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:04_GPIO_HAL_Encoder Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:00_GPIO\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:00_GPIO\ Debug/activeLaunchTarget=null\:---
@@ -9,6 +9,7 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:01_GPIO_Exercicio1_botao_raiz\ 
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:01_GPIO_Exercicio1_botao_raiz\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:02_GPIO_Usando_HAL\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:03_GPIO_HAL_Reles\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:04_GPIO_HAL_Encoder\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:GPIO_IOToggle\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:GPIO_IOToggle/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:GPIO_IOToggle/activeLaunchTarget=null\:---
