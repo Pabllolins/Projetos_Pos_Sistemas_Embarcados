@@ -42,13 +42,13 @@
 			<item key="textPattern" value="MX_GPIO_Init"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
-				<item value="*.h"/>
-				<item value="*.cc"/>
-				<item value="*.hh"/>
-				<item value="*.c++"/>
-				<item value="*.cpp"/>
 				<item value="*.C"/>
 				<item value="*.c"/>
+				<item value="*.c++"/>
+				<item value="*.cc"/>
+				<item value="*.cpp"/>
+				<item value="*.h"/>
+				<item value="*.hh"/>
 			</list>
 			<list key="workingSets">
 			</list>
@@ -79,9 +79,6 @@
 		<item key="org.eclipse.search.resultpage.limit" value="1000"/>
 	</section>
 	<section name="org.eclipse.search.text.FileSearchResultPage">
-		<item key="org.eclipse.search.resultpage.limit" value="1000"/>
-	</section>
-	<section name="">
 		<item key="org.eclipse.search.resultpage.limit" value="1000"/>
 	</section>
 </section>

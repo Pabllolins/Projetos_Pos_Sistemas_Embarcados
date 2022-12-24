@@ -1,32 +1,10 @@
-20:00:46 **** Incremental Build of configuration Debug for project 01_GPIO_Exercicio1_botao_raiz ****
+19:24:59 **** Incremental Build of configuration Debug for project 01_GPIO_Exercicio1_botao_raiz ****
 make -j4 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I/home/pabllo/STM32Cube/Repository/STM32Cube_FW_F4_V1.27.1/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/pabllo/STM32Cube/Repository/STM32Cube_FW_F4_V1.27.1/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/pabllo/STM32Cube/Repository/STM32Cube_FW_F4_V1.27.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/pabllo/STM32Cube/Repository/STM32Cube_FW_F4_V1.27.1/Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:18:2: warning: "/*" within comment [-Wcomment]
-   18 |  /*
-      |   
-../Core/Src/main.c: In function 'vGPIOC_13_InitButtonB1':
-../Core/Src/main.c:250:11: warning: variable 'tmpreg' set but not used [-Wunused-but-set-variable]
-  250 |  uint32_t tmpreg = 0;
-      |           ^~~~~~
-../Core/Src/main.c: In function 'vGPIOA_5_InitLED2':
-../Core/Src/main.c:306:11: warning: variable 'tmpreg' set but not used [-Wunused-but-set-variable]
-  306 |  uint32_t tmpreg = 0;
-      |           ^~~~~~
-At top level:
-../Core/Src/main.c:218:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
-  218 | static void MX_GPIO_Init(void)
-      |             ^~~~~~~~~~~~
-arm-none-eabi-gcc -o "01_GPIO_Exercicio1_botao_raiz.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/pabllo/MEGA/POS_GRADUACAO_SENAI/Sistemas_embarcados/Projetos_Pos_Sistemas_Embarcados/Semestre_1/PROEMB/CubeIDEWorkspace/01_GPIO_Exercicio1_botao_raiz/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="01_GPIO_Exercicio1_botao_raiz.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: 01_GPIO_Exercicio1_botao_raiz.elf
- 
 arm-none-eabi-size   01_GPIO_Exercicio1_botao_raiz.elf 
-arm-none-eabi-objdump -h -S  01_GPIO_Exercicio1_botao_raiz.elf  > "01_GPIO_Exercicio1_botao_raiz.list"
    text	   data	    bss	    dec	    hex	filename
    8496	     20	   1636	  10152	   27a8	01_GPIO_Exercicio1_botao_raiz.elf
 Finished building: default.size.stdout
  
-Finished building: 01_GPIO_Exercicio1_botao_raiz.list
- 
 
-20:00:48 Build Finished. 0 errors, 4 warnings. (took 1s.135ms)
+19:24:59 Build Finished. 0 errors, 0 warnings. (took 570ms)
 

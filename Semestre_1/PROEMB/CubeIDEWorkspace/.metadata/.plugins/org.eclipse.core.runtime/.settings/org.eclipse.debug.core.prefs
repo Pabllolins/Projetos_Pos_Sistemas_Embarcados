@@ -4,4 +4,4 @@
 //org.eclipse.debug.core.PREFERRED_DELEGATES/org.eclipse.cdt.launch.postmortemLaunchType=org.eclipse.cdt.dsf.gdb.launch.coreCLaunch,debug,;
 //org.eclipse.debug.core.PREFERRED_DELEGATES/org.eclipse.cdt.launch.remoteApplicationLaunchType=org.eclipse.rse.remotecdt.dsf.debug,debug,;
 eclipse.preferences.version=1
-prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<watchExpressions>\n    <expression enabled\="true" text\="GPIOA"/>\n    <expression enabled\="true" text\="GPIOC"/>\n</watchExpressions>\n
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<watchExpressions>\n    <expression enabled\="true" text\="GPIOA"/>\n    <expression enabled\="true" text\="GPIOC"/>\n    <expression enabled\="true" text\="USART_SR_RXNE"/>\n    <expression enabled\="true" text\="USART2-&gt;SR"/>\n    <expression enabled\="true" text\="USART2-&gt;DR"/>\n    <expression enabled\="true" text\="UART_FLAG_TXE"/>\n    <expression enabled\="true" text\="TX2"/>\n    <expression enabled\="true" text\="RX2"/>\n    <expression enabled\="true" text\="TX4"/>\n    <expression enabled\="true" text\="RX4"/>\n</watchExpressions>\n
